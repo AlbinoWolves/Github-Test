@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch SnakeGame",
+      "request": "launch",
+      "mainClass": "SnakeGame",
+      "projectName": "Github-Test_6caa1c89"
+    },
+    {
+      "type": "java",
       "name": "Launch Current File",
       "request": "launch",
       "mainClass": "${file}"
