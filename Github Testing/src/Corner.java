@@ -2,8 +2,11 @@ public class Corner {
     private int x;
     private int y;
 
-    public Corner () {
-        
+    public Corner (int i, int j) {
+    
+    }
+
+    public Corner() {
     }
 
     public int getX() {

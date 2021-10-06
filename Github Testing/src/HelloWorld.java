@@ -10,7 +10,6 @@ import javafx.scene.canvas.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -24,7 +23,7 @@ public class HelloWorld extends Application {
     protected static boolean gameOver = false;
     protected static Random random = new Random();
     protected static int cornerSize = 30;
-    protected static List<Corner> snake = new ArrayList<>();
+    protected static List<Corner> snakeBody = new ArrayList<>();
     static Direction direction = Direction.RIGHT;
 
     enum Direction {
@@ -35,10 +34,6 @@ public class HelloWorld extends Application {
     int x = corner.getX();
     int y = corner.getY();
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
     public void start(Stage primaryStage) {
         VBox root = new VBox();
@@ -46,9 +41,9 @@ public class HelloWorld extends Application {
         btn.setText("Start Game");
         primaryStage.setTitle("Snake Game");
 
-        Canvas canvas = new Canvas(GWidth * cornerSize, GLength * cornerSize);
+       /* Canvas canvas = new Canvas(GWidth * cornerSize, GLength * cornerSize);
         root.getChildren().add(canvas);
-        root.getChildren().add(btn);
+        root.getChildren().add(btn); */
 
         new AnimationTimer() {
             long lastTick = 0;
@@ -70,6 +65,26 @@ public class HelloWorld extends Application {
         Scene scene = new Scene(root, GWidth * cornerSize, GLength * cornerSize);
 
         // Movement commands
+        scene.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.UP) {
+                direction = Direction.UP;
+            }
+            if (e.getCode() == KeyCode.DOWN) {
+                direction = Direction.DOWN;
+            }
+
+            if (e.getCode() == KeyCode.LEFT) {
+                direction = Direction.LEFT;
+            }
+
+            if (e.getCode() == KeyCode.RIGHT) {
+                direction = Direction.RIGHT;
+            }
+        });
+        //Building snake body
+       /* snakeBody.add(new Corner (GWidth / 2, GLength /2));
+        snakeBody.add(new Corner (GWidth /2, GLength / 2));
+        snakeBody.add(new Corner (GWidth /2, GLength / 2)); */
 
         primaryStage.setScene(new Scene(root, 700, 700));
         primaryStage.show();
@@ -77,11 +92,17 @@ public class HelloWorld extends Application {
     }
 
     public static void spawnFood() {
+        while(start == true) {
 
+        }
     }
 
     public static void direction() {
 
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 
 }
